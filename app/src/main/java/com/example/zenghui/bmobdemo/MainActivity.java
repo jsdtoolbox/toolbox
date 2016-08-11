@@ -35,10 +35,10 @@ public class MainActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvTitle = (TextView) findViewById(R.id.title);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("");
-        setSupportActionBar(mToolbar);
+//        tvTitle = (TextView) findViewById(R.id.title);
+//        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        mToolbar.setTitle("");
+//        setSupportActionBar(mToolbar);
         //第一：默认初始化
 //        Bmob.initialize(this, "1aa22fd76dd576e17837b77ea658e4c4");
 
@@ -58,12 +58,12 @@ public class MainActivity extends BasicActivity {
 
 
         fragmentManager = getSupportFragmentManager();
-        radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
-        ((RadioButton)radioGroup.findViewById(R.id.imgOne)).setChecked(true);
+//        radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
+//        ((RadioButton)radioGroup.findViewById(R.id.imgOne)).setChecked(true);
 
         transaction = fragmentManager.beginTransaction();
 
-        tvTitle.setText("筛选");
+//        tvTitle.setText("筛选");
         fragment = new ViewPagerFragment();
         fragments = new ArrayList<>();
         fragments.add(new CommonFragment());
@@ -72,27 +72,27 @@ public class MainActivity extends BasicActivity {
         fragment.InitViewPager(fragments,new String[]{"常用工具","公募筹款","债权转让"});
         transaction.replace(R.id.contentView, fragment);
         transaction.commit();
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.imgOne:
-
-                        transaction = fragmentManager.beginTransaction();
-                        transaction.replace(R.id.contentView, fragment);
-                        transaction.commit();
-                        break;
-                    case R.id.imgTwo:
-
-                        transaction = fragmentManager.beginTransaction();
-                        Fragment personFragment = new DebitFragment();
-                        transaction.replace(R.id.contentView, personFragment);
-                        transaction.commit();
-                        break;
-                }
-
-            }
-        });
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.imgOne:
+//
+//                        transaction = fragmentManager.beginTransaction();
+//                        transaction.replace(R.id.contentView, fragment);
+//                        transaction.commit();
+//                        break;
+//                    case R.id.imgTwo:
+//
+//                        transaction = fragmentManager.beginTransaction();
+//                        Fragment personFragment = new DebitFragment();
+//                        transaction.replace(R.id.contentView, personFragment);
+//                        transaction.commit();
+//                        break;
+//                }
+//
+//            }
+//        });
 
 
 //        Person p2 = new Person();

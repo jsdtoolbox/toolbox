@@ -29,6 +29,7 @@
             android:id="@+id/phone" />
 
         <Button
+            android:layout_marginLeft="@dimen/public_space_value_5"
             android:background="@drawable/btn_next_r4"
             android:layout_width="@dimen/public_space_value_50"
             android:layout_height="@dimen/public_space_value_30"
@@ -62,28 +63,28 @@
             android:background="@drawable/white_cycle"/>
         <ImageView
             android:layout_centerInParent="true"
-            android:layout_width="@dimen/public_space_value_120"
-            android:layout_height="@dimen/public_space_value_120"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
             android:background="@mipmap/person"/>
 
     </RelativeLayout>
 
 
     <TextView
+        android:id="@+id/tvCity"
         android:layout_marginTop="@dimen/public_space_value_20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/public_textsize_value_20"
-        android:text="上海联通"
         android:textStyle="bold"
         android:textColor="@color/white"/>
 
     <TextView
+        android:id="@+id/tvPhone"
         android:layout_marginTop="@dimen/public_space_value_15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="@dimen/public_textsize_value_20"
-        android:text="13061866795"
         android:textColor="@color/white"/>
 </LinearLayout>

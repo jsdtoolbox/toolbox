@@ -13,6 +13,7 @@ import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.adapter.ListAdapter;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.ListInfo;
+import com.example.zenghui.bmobdemo.views.BmobDialog;
 
 import java.util.List;
 
@@ -67,5 +68,22 @@ public class DialogUtil {
         });
         mDialog.show();
     }
+    public static BmobDialog bmobDialog;
+    public static void showLoading(Context context,String content){
 
+        if (bmobDialog != null && bmobDialog.isShowing()){
+            return;
+        }
+        bmobDialog = new BmobDialog(context, content);
+        bmobDialog.setCancelable(false);
+        bmobDialog.show();
+    }
+
+    public static void dimissLoading(){
+
+        if (bmobDialog != null && bmobDialog.isShowing()){
+            bmobDialog.dismiss();
+        }
+
+    }
 }

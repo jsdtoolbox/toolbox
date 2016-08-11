@@ -9,6 +9,8 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -33,7 +35,7 @@ public class Common {
     public static final String DOMAIN = "http://apis.juhe.cn";
     public static String JSESSIONID = "";
     public static String SERVERID = "";
-
+    public static String PHONE_PATTERN ="^[1][3,4,7,5,8][0-9]{9}$";
     public static ITask getTask(final String apiUrl) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -98,5 +100,20 @@ public class Common {
                 SERVERID = string.split(";")[0];
             }
         }
+    }
+
+    /**
+     * 校验电话号码
+     *
+     * @param phone
+     * @return
+     */
+    public static boolean isPhoneValid(String phone) {
+        if (TextUtils.isEmpty(phone)){
+            return false;
+        }
+        Pattern pattern = Pattern.compile(Common.PHONE_PATTERN);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 }

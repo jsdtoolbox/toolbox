@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/public_space_value_20"
+        android:layout_marginRight="@dimen/public_space_value_20"
+        android:layout_marginTop="@dimen/public_space_value_15"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.zenghui.bmobdemo.views.ExtendClearEditText
+            android:background="@null"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textColorHint="@color/T2"
+            android:hint="请输入手机号"
+            android:id="@+id/phone" />
+
+        <Button
+            android:background="@drawable/btn_next_r4"
+            android:layout_width="@dimen/public_space_value_50"
+            android:layout_height="@dimen/public_space_value_30"
+            android:textColor="@color/white"
+            android:textSize="@dimen/public_textsize_value_16"
+            android:text="查询"
+            android:id="@+id/btnSearch" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/public_space_value_50"
+        android:gravity="center"
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        >
+
+        <ImageView
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:background="@drawable/dark_blue_cycle"/>
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@drawable/blue_cycle"/>
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/white_cycle"/>
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/public_space_value_120"
+            android:layout_height="@dimen/public_space_value_120"
+            android:background="@mipmap/person"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_marginTop="@dimen/public_space_value_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/public_textsize_value_20"
+        android:text="上海联通"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/public_space_value_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/public_textsize_value_20"
+        android:text="13061866795"
+        android:textColor="@color/white"/>
+</LinearLayout>

@@ -14,6 +14,8 @@ import com.example.zenghui.bmobdemo.PhoneAddressActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.GrildItemInfo;
+import com.example.zenghui.bmobdemo.model.ListInfo;
+import com.example.zenghui.bmobdemo.utils.Common;
 import com.example.zenghui.bmobdemo.views.TouchLinearLayout;
 
 import java.util.List;
@@ -61,13 +63,18 @@ public class GrildViewAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.img.setBackgroundResource(list.get(position).getImgSource());
-        viewHolder.tv.setText(list.get(position).getDecribe());
+        final GrildItemInfo grildItemInfo = list.get(position);
+        viewHolder.img.setBackgroundResource(grildItemInfo.getImgSource());
+        viewHolder.tv.setText(grildItemInfo.getDecribe());
 
         ((TouchLinearLayout)convertView).setHandleDialogListener(new DialogListener() {
             @Override
             public void handle(String text) {
-                context.startActivity(new Intent(context, PhoneAddressActivity.class));
+                if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
+                    context.startActivity(new Intent(context, PhoneAddressActivity.class));
+                }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
+
+                }
             }
         });
 

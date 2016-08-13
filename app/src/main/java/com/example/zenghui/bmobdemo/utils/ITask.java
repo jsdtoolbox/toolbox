@@ -30,5 +30,8 @@ public interface ITask {
     @GET("/mobile/get")
     Call<PhoneResponse> getPhoneAddress(@Query("phone") String phone, @Query("key") String key);
 
+    @GET("/lawyers/pro")
+    Call<PhoneResponse> getLawyer(@Query("dtype") String dtype, @Query("st") int st,@Query("count") int count,@Query("pro") String pro,@Query("key") String key);
+
 
 }

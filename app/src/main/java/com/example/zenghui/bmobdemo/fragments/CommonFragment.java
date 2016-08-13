@@ -41,10 +41,15 @@ public class CommonFragment extends BasicFragment{
         gridView = (GridView) rootView.findViewById(R.id.gridView);
 
         List<GrildItemInfo> list = new ArrayList<>();
+        GrildItemInfo grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("号码归属地");
+        grildItemInfo.setKey(Common.PHONE_ADDRESS_KEY);
+        grildItemInfo.setImgSource(R.mipmap.wather);
+        list.add(grildItemInfo);
         for (int i = 0; i < 30; i++){
-            GrildItemInfo grildItemInfo = new GrildItemInfo();
-            grildItemInfo.setDecribe("天气");
-            grildItemInfo.setKey(Common.PHONE_ADDRESS_KEY);
+            grildItemInfo = new GrildItemInfo();
+            grildItemInfo.setDecribe("律师");
+            grildItemInfo.setKey(Common.LAWYER_KEY);
             grildItemInfo.setImgSource(R.mipmap.wather);
             list.add(grildItemInfo);
         }

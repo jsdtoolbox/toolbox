@@ -71,9 +71,9 @@ public class ViewPagerFragment extends BasicFragment {
         tvTabHot = (TextView) parentView.findViewById(R.id.tv_tab_2);
         tvTabThree = (TextView) parentView.findViewById(R.id.tv_tab_3);
 
-        tvTabNew.setTextColor(resources.getColor(R.color.top_title_blue_theme));
-        tvTabHot.setTextColor(resources.getColor(R.color.top_title_blue_theme));
-        tvTabThree.setTextColor(resources.getColor(R.color.top_title_blue_theme));
+        tvTabNew.setTextColor(resources.getColor(R.color.text_color_white));
+        tvTabHot.setTextColor(resources.getColor(R.color.text_color_white));
+        tvTabThree.setTextColor(resources.getColor(R.color.text_color_white));
 
         if (fragmentsList.size() == 1){
             tvTabNew.setOnClickListener(new MyOnClickListener(0));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#25abf7</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="top_title_blue_theme">#49B6AD</color>
@@ -31,4 +31,11 @@
     <color name="T3">#999999</color>
     <color name="T4">#666666</color>
     <color name="T5">#333333</color>
+
+    <color name="blue_bar">#25abf7</color>
+    <color name="app_bg">#f6f6f6</color>
+
+    <color name="text_color_white">#FFFFFF</color>
+    <color name="text_color_blue">#25abf7</color>
+
 </resources>

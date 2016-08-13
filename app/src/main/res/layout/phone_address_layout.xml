@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/public_space_value_15"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.example.zenghui.bmobdemo.views.ExtendClearEditText

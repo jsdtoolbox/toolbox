@@ -33,7 +33,9 @@
         <activity
             android:name=".PhoneAddressActivity"
             android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".LawyerActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zenghui.bmobdemo.LawyerActivity;
 import com.example.zenghui.bmobdemo.PhoneAddressActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
@@ -73,7 +74,7 @@ public class GrildViewAdapter extends BaseAdapter{
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
                 }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
-
+                    context.startActivity(new Intent(context, LawyerActivity.class));
                 }
             }
         });

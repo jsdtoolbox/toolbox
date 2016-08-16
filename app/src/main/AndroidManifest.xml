@@ -36,6 +36,9 @@
         <activity
             android:name=".activity.LawyerListActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.LawyerDetailActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/LytNormal"
+            android:layout_marginTop="@dimen/public_space_value_10"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/head"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/public_space_value_10"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/TvNormal"
+                    android:textSize="@dimen/public_textsize_value_18"/>
+                <TextView
+                    android:id="@+id/city"
+                    style="@style/TvNormal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lyt_mechanismName"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px"
+            android:layout_marginTop="@dimen/public_space_value_10">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="机构名称：" />
+
+            <TextView
+                android:id="@+id/mechanismName"
+                style="@style/TvNormal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_professional"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="专长领域：" />
+
+            <TextView
+                android:id="@+id/professional"
+                style="@style/TvNormal"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lyt_address"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="地        址：" />
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/TvNormal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_authNumber"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="执业证号：" />
+
+            <TextView
+                android:id="@+id/authNumber"
+                style="@style/TvNormal" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lyt_phone"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="手  机  号：" />
+
+            <TextView
+                android:id="@+id/phone"
+                style="@style/TvNormal" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lyt_qq"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="联系   QQ：" />
+
+            <TextView
+                android:id="@+id/qq"
+                style="@style/TvNormal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyt_dec"
+            style="@style/LytNormal"
+            android:layout_marginBottom="1px">
+
+            <TextView
+                style="@style/TvNormal"
+                android:text="详细描述："/>
+
+            <TextView
+                android:id="@+id/dec"
+                style="@style/TvNormal"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

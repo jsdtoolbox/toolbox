@@ -9,21 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zenghui.bmobdemo.R;
+import com.example.zenghui.bmobdemo.model.LawyerInfo;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Map;
-
+import  com.example.zenghui.bmobdemo.model.LawyerInfo.LawyerInfoItem;
 /**
  * Created by zenghui on 16/8/13.
  */
 public class LawyerAdapter extends BaseAdapter {
 
-    List<Map<String, String>> list;
+    List<LawyerInfoItem> list;
     Context context;
     Picasso picasso;
 
-    public LawyerAdapter(Context context, List<Map<String, String>> list) {
+    public LawyerAdapter(Context context,  List<LawyerInfoItem> list) {
         this.context = context;
         this.list = list;
         picasso = Picasso.with(context);
@@ -58,14 +58,14 @@ public class LawyerAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Map<String, String> map = list.get(position);
+        LawyerInfoItem item = list.get(position);
         picasso.setLoggingEnabled(true);
-        picasso.load(map.get("img"))
+        picasso.load(item.getImg())
                 .noFade()
                 .into(viewHolder.img);
-        viewHolder.corp.setText("公司：" + map.get("corp"));
-        viewHolder.spec.setText("职业能力："+map.get("spec"));
-        viewHolder.name.setText(map.get("name").substring(0, map.get("name").length() - 2));
+        viewHolder.corp.setText("公司：" + item.getCorp());
+        viewHolder.spec.setText("职业能力："+item.getSpec());
+        viewHolder.name.setText(item.getName().substring(0, item.getName().length() - 2));
         return convertView;
     }
 

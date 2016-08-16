@@ -1,5 +1,6 @@
 package com.example.zenghui.bmobdemo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 public class LawyerInfo {
 
     String reason;
-    List<Map<String,String>> result;
+    ArrayList<Map<String,String>> result;
     int error_code;
 
 
@@ -21,11 +22,11 @@ public class LawyerInfo {
         this.reason = reason;
     }
 
-    public List<Map<String, String>> getResult() {
+    public ArrayList<Map<String, String>> getResult() {
         return result;
     }
 
-    public void setResult(List<Map<String, String>> result) {
+    public void setResult(ArrayList<Map<String, String>> result) {
         this.result = result;
     }
 

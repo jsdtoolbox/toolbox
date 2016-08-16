@@ -1,4 +1,4 @@
-package com.example.zenghui.bmobdemo;
+package com.example.zenghui.bmobdemo.activity;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.zenghui.bmobdemo.BasicActivity;
+import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.fragments.CommonFragment;
 import com.example.zenghui.bmobdemo.fragments.DebitFragment;
 import com.example.zenghui.bmobdemo.fragments.ViewPagerFragment;

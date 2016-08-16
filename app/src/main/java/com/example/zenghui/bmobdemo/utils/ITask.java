@@ -34,5 +34,8 @@ public interface ITask {
     @GET("/lawyers/city")
     Call<LawyerInfo> getLawyer(@Query("dtype") String dtype, @Query("st") int st, @Query("count") int count, @Query("city") String pro, @Query("key") String key);
 
+    @GET("/lawyers/pro")
+    Call<LawyerInfo> getProLawyer(@Query("dtype") String dtype, @Query("st") int st, @Query("count") int count, @Query("pro") String pro, @Query("key") String key);
+
 
 }

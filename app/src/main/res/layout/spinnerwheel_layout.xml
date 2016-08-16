@@ -11,13 +11,13 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <com.cashbus.android.swhj.spinnerwheel.WheelVerticalView
+        <com.example.zenghui.bmobdemo.spinnerwheel.WheelVerticalView
             android:id="@+id/left"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.cashbus.android.swhj.spinnerwheel.WheelVerticalView
+        <com.example.zenghui.bmobdemo.spinnerwheel.WheelVerticalView
             android:id="@+id/right"
             android:layout_width="0dp"
             android:layout_height="match_parent"

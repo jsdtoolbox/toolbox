@@ -97,7 +97,7 @@ public class DialogUtil {
 
     static String[] rightArr = null;
     @TargetApi(Build.VERSION_CODES.M)
-    public static void spinnerWheelDialog(final Context con, String title,
+    public static void spinnerWheelDialog(final Context con,
                                           boolean cancelable, final String[] leftArr, final DialogListener handle) {
         final Dialog mDialog = new Dialog(con, R.style.CashBusDialog);
         mDialog.setContentView(R.layout.spinnerwheel_layout);

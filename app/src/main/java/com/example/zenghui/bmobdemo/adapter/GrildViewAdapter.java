@@ -10,12 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.zenghui.bmobdemo.LawyerActivity;
-import com.example.zenghui.bmobdemo.PhoneAddressActivity;
+import com.example.zenghui.bmobdemo.activity.LawyerActivity;
+import com.example.zenghui.bmobdemo.activity.PhoneAddressActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.GrildItemInfo;
-import com.example.zenghui.bmobdemo.model.ListInfo;
 import com.example.zenghui.bmobdemo.utils.Common;
 import com.example.zenghui.bmobdemo.utils.DialogUtil;
 import com.example.zenghui.bmobdemo.views.TouchLinearLayout;
@@ -74,19 +73,33 @@ public class GrildViewAdapter extends BaseAdapter{
             public void handle(String text) {
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
-                }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
-                    DialogUtil.spinnerWheelDialog(context, "选择城市", false, context.getResources().getStringArray(R.array.province_item), new DialogListener() {
+                } else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)) {
+                    DialogUtil.spinnerWheelDialog(context, false, context.getResources().getStringArray(R.array.province_item), new DialogListener() {
                         @Override
                         public void handle(String text) {
                             Intent intent = new Intent(context, LawyerActivity.class);
-                            intent.putExtra("city",text.split("-")[1]);
-                            context.startActivity(new Intent(context, LawyerActivity.class));
+                            String city;
+                            if(text.contains("-")){
+                                city = text.split("-")[1];
+                                if (text.contains("北京")
+                                        || text.contains("天津")
+                                        || text.contains("上海")
+                                        || text.contains("重庆")){
+                                    city = text.split("-")[0];
+                                    intent.putExtra("isCity",false);
+                                }
+                            }else {
+                                city=text;
+                            }
+                            intent.putExtra("city", city);
+                            context.startActivity(intent);
                         }
+
+
                     });
                 }
             }
         });
-
         return convertView;
     }
 

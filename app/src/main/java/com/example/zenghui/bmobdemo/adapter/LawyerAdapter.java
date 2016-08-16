@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zenghui.bmobdemo.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Map;
@@ -15,13 +17,16 @@ import java.util.Map;
 /**
  * Created by zenghui on 16/8/13.
  */
-public class LawyerAdapter extends BaseAdapter{
+public class LawyerAdapter extends BaseAdapter {
 
-    List<Map<String,String>> list;
+    List<Map<String, String>> list;
     Context context;
-    public LawyerAdapter(Context context,List<Map<String,String>> list){
+    Picasso picasso;
+
+    public LawyerAdapter(Context context, List<Map<String, String>> list) {
         this.context = context;
         this.list = list;
+        picasso = Picasso.with(context);
     }
 
     @Override
@@ -42,23 +47,30 @@ public class LawyerAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.lawyer_item,null);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.lawyer_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.city = (TextView) convertView.findViewById(R.id.tvCity);
+            viewHolder.img = (ImageView) convertView.findViewById(R.id.ivHead);
+            viewHolder.corp = (TextView) convertView.findViewById(R.id.tvCorp);
+            viewHolder.spec = (TextView) convertView.findViewById(R.id.tvSpec);
             viewHolder.name = (TextView) convertView.findViewById(R.id.tvName);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Map<String,String> map = list.get(position);
-
-        viewHolder.city.setText(map.get("city")+"-");
-        viewHolder.name.setText(map.get("name").substring(0,map.get("name").length()-2));
+        Map<String, String> map = list.get(position);
+        picasso.setLoggingEnabled(true);
+        picasso.load(map.get("img"))
+                .noFade()
+                .into(viewHolder.img);
+        viewHolder.corp.setText("公司：" + map.get("corp"));
+        viewHolder.spec.setText("职业能力："+map.get("spec"));
+        viewHolder.name.setText(map.get("name").substring(0, map.get("name").length() - 2));
         return convertView;
     }
 
-    class ViewHolder{
-        TextView city,name;
+    class ViewHolder {
+        ImageView img;
+        TextView corp, name, spec;
     }
 }

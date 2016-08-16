@@ -21,7 +21,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,10 +31,10 @@
         </activity>
 
         <activity
-            android:name=".PhoneAddressActivity"
+            android:name=".activity.PhoneAddressActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LawyerActivity"
+            android:name=".activity.LawyerListActivity"
             android:screenOrientation="portrait"/>
 
     </application>

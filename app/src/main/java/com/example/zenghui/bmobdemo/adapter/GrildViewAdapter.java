@@ -8,14 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.zenghui.bmobdemo.LawyerActivity;
-import com.example.zenghui.bmobdemo.PhoneAddressActivity;
+import com.example.zenghui.bmobdemo.activity.LawyerListActivity;
+import com.example.zenghui.bmobdemo.activity.PhoneAddressActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.GrildItemInfo;
-import com.example.zenghui.bmobdemo.model.ListInfo;
 import com.example.zenghui.bmobdemo.utils.Common;
 import com.example.zenghui.bmobdemo.views.TouchLinearLayout;
 
@@ -74,7 +72,7 @@ public class GrildViewAdapter extends BaseAdapter{
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
                 }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
-                    context.startActivity(new Intent(context, LawyerActivity.class));
+                    context.startActivity(new Intent(context, LawyerListActivity.class));
                 }
             }
         });

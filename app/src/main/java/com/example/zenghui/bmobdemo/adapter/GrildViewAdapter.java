@@ -17,6 +17,7 @@ import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.GrildItemInfo;
 import com.example.zenghui.bmobdemo.model.ListInfo;
 import com.example.zenghui.bmobdemo.utils.Common;
+import com.example.zenghui.bmobdemo.utils.DialogUtil;
 import com.example.zenghui.bmobdemo.views.TouchLinearLayout;
 
 import java.util.List;
@@ -74,7 +75,14 @@ public class GrildViewAdapter extends BaseAdapter{
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
                 }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
-                    context.startActivity(new Intent(context, LawyerActivity.class));
+                    DialogUtil.spinnerWheelDialog(context, "选择城市", false, context.getResources().getStringArray(R.array.province_item), new DialogListener() {
+                        @Override
+                        public void handle(String text) {
+                            Intent intent = new Intent(context, LawyerActivity.class);
+                            intent.putExtra("city",text.split("-")[1]);
+                            context.startActivity(new Intent(context, LawyerActivity.class));
+                        }
+                    });
                 }
             }
         });

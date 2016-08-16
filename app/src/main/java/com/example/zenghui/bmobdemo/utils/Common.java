@@ -27,6 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by zenghui on 16/8/11.
  */
 public class Common {
+
+    public static int screem_width = 0,screem_height = 0;
+
     public static final String HTTPREQUEST_COOKIE = "Cookie";
     public static final String PHONE_ADDRESS_KEY = "a9244c333e015e0b46f01086dbeb25cb";
     public static final String LAWYER_KEY = "6f940a4a81649f3b6d30e47cdd37a5ad";

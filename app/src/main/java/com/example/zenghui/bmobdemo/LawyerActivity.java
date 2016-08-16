@@ -34,6 +34,7 @@ public class LawyerActivity extends BasicActivity{
     TextView name,dec,mechanismName,phone,qq,address,professional,authNumber;
     ImageView head;
     ListView listView;
+    String city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,8 @@ public class LawyerActivity extends BasicActivity{
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        city = getIntent().getStringExtra("city");
 
         name = (TextView) findViewById(R.id.name);
         dec = (TextView) findViewById(R.id.dec);
@@ -74,7 +77,7 @@ public class LawyerActivity extends BasicActivity{
 
         DialogUtil.showLoading(this,"获取中...");
         ITask iTask = Common.getTask("http://op.juhe.cn");
-        Call<LawyerInfo> call = iTask.getLawyer("json",0,20,"厦门",Common.LAWYER_KEY);
+        Call<LawyerInfo> call = iTask.getLawyer("json",0,20,city,Common.LAWYER_KEY);
         call.enqueue(new CookieCallBack<LawyerInfo>(){
 
             @Override

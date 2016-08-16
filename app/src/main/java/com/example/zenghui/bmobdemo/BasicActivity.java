@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.zenghui.bmobdemo.utils.Common;
+
 /**
  * Created by zenghui on 16/8/9.
  */
@@ -19,5 +21,11 @@ public class BasicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
+        if (Common.screem_width == 0){
+            WindowManager wm = this.getWindowManager();
+            Common.screem_width = wm.getDefaultDisplay().getWidth();
+            Common.screem_height = wm.getDefaultDisplay().getHeight();
+        }
     }
 }

@@ -141,7 +141,7 @@
 
             <TextView
                 android:id="@+id/dec"
-                style="@style/TvNormal"/>
+                style="@style/TvNotSingleLine"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

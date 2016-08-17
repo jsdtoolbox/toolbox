@@ -75,7 +75,6 @@ public class PhoneAddressActivity extends BasicActivity {
                     @Override
                     public void onResponse(Call<PhoneResponse> call, Response<PhoneResponse> response) {
                         super.onResponse(call, response);
-                        Log.d("", "ddddd");
                         PhoneResponse phoneResponse = response.body();
                         if (phoneResponse != null) {
                             if (phoneResponse.getResultcode().equals("200")) {

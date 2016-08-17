@@ -6,11 +6,16 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/toolbar" />
-
-    <ListView
-        android:id="@+id/list"
-        android:divider="@color/app_bg"
-        android:dividerHeight="10dp"
+    <com.example.zenghui.bmobdemo.views.RefreshLayout
+        android:id="@+id/myRefreshListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list"
+            android:divider="@color/app_bg"
+            android:dividerHeight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.example.zenghui.bmobdemo.views.RefreshLayout>
 </LinearLayout>

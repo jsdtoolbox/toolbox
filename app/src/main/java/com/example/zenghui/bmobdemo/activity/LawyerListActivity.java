@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.zenghui.bmobdemo.BasicActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.adapter.LawyerAdapter;
 import com.example.zenghui.bmobdemo.model.CookieCallBack;
@@ -29,9 +30,11 @@ import  com.example.zenghui.bmobdemo.model.LawyerInfo.LawyerInfoItem;
 /**
  * Created by zenghui on 16/8/13.
  */
-public class LawyerListActivity extends BasicActivity{
+public class LawyerListActivity extends BasicActivity {
 
     ListView listView;
+    String city;
+    boolean isCity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,8 @@ public class LawyerListActivity extends BasicActivity{
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        city = getIntent().getStringExtra("city");
+        isCity = getIntent().getBooleanExtra("isCity",true);
 
         listView = (ListView) findViewById(R.id.list);
         getLawyer();
@@ -65,7 +69,12 @@ public class LawyerListActivity extends BasicActivity{
 
         DialogUtil.showLoading(this, "获取中...");
         ITask iTask = Common.getTask("http://op.juhe.cn");
-        Call<LawyerInfo> call = iTask.getLawyer("json", 0, 20, "厦门", Common.LAWYER_KEY);
+        Call<LawyerInfo> call;
+        if (isCity) {
+            call = iTask.getLawyer("json", 0, 20, city, Common.LAWYER_KEY);
+        }else {
+            call = iTask.getProLawyer("json", 0, 20, city, Common.LAWYER_KEY);
+        }
         call.enqueue(new CookieCallBack<LawyerInfo>() {
 
             @Override

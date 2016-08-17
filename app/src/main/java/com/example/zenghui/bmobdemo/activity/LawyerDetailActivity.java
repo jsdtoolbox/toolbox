@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.zenghui.bmobdemo.BasicActivity;
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.model.LawyerInfo.LawyerInfoItem;
 import com.squareup.picasso.Picasso;

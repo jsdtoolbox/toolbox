@@ -15,6 +15,7 @@ import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
 import com.example.zenghui.bmobdemo.model.GrildItemInfo;
 import com.example.zenghui.bmobdemo.utils.Common;
+import com.example.zenghui.bmobdemo.utils.DialogUtil;
 import com.example.zenghui.bmobdemo.views.TouchLinearLayout;
 
 import java.util.List;
@@ -71,12 +72,33 @@ public class GrildViewAdapter extends BaseAdapter{
             public void handle(String text) {
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
-                }else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)){
-                    context.startActivity(new Intent(context, LawyerListActivity.class));
+                } else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)) {
+                    DialogUtil.spinnerWheelDialog(context, false, context.getResources().getStringArray(R.array.province_item), new DialogListener() {
+                        @Override
+                        public void handle(String text) {
+                            Intent intent = new Intent(context, LawyerListActivity.class);
+                            String city;
+                            if(text.contains("-")){
+                                city = text.split("-")[1];
+                                if (text.contains("北京")
+                                        || text.contains("天津")
+                                        || text.contains("上海")
+                                        || text.contains("重庆")){
+                                    city = text.split("-")[0];
+                                    intent.putExtra("isCity",false);
+                                }
+                            }else {
+                                city=text;
+                            }
+                            intent.putExtra("city", city);
+                            context.startActivity(intent);
+                        }
+
+
+                    });
                 }
             }
         });
-
         return convertView;
     }
 

@@ -90,6 +90,7 @@ public class LawyerListActivity extends BasicActivity {
                     @Override
                     public void run() {
                         // 更新数据
+                        loadOver = false;
                         startIndex = 0;
                         endIndex = 20;
                         getLawyer(false);

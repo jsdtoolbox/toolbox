@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/top_text_bg"
+        android:gravity="center"
+        android:textSize="@dimen/public_textsize_value_20"
+        android:id="@+id/title" />
+        <LinearLayout
+            android:background="@color/app_bg"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.zenghui.bmobdemo.views.ExtendClearEditText
+                android:textColor="@color/T5"
+                android:textColorHint="@color/T2"
+                android:hint="请输入ip"
+                android:textSize="@dimen/public_textsize_value_15"
+                android:layout_margin="@dimen/public_space_value_20"
+                android:paddingLeft="@dimen/public_space_value_5"
+                android:paddingBottom="@dimen/public_space_value_10"
+                android:paddingTop="@dimen/public_space_value_10"
+                android:paddingRight="@dimen/public_space_value_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/tvInput" />
+            <TextView
+                android:textColor="@color/T5"
+                android:textSize="@dimen/public_textsize_value_15"
+                android:paddingLeft="@dimen/public_space_value_20"
+                android:paddingRight="@dimen/public_space_value_20"
+                android:paddingBottom="@dimen/public_space_value_20"
+                android:text="IP来自:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDetail" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_space_value_50"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:background="@drawable/bottom_btn_bg"
+            android:text="确定"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

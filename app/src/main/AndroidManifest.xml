@@ -34,6 +34,12 @@
             android:name=".activity.PhoneAddressActivity"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".activity.LaughActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.IdentityActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activity.LawyerListActivity"
             android:screenOrientation="portrait"/>
         <activity

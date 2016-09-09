@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.zenghui.bmobdemo.activity.IdentityActivity;
+import com.example.zenghui.bmobdemo.activity.LaughActivity;
 import com.example.zenghui.bmobdemo.activity.LawyerListActivity;
 import com.example.zenghui.bmobdemo.activity.PhoneAddressActivity;
 import com.example.zenghui.bmobdemo.R;
@@ -72,7 +74,15 @@ public class GrildViewAdapter extends BaseAdapter{
             public void handle(String text) {
                 if (grildItemInfo.getKey().equals(Common.PHONE_ADDRESS_KEY)) {
                     context.startActivity(new Intent(context, PhoneAddressActivity.class));
-                } else if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)) {
+                } else if (grildItemInfo.getKey().equals(Common.IDENTITY_KEY)) {
+                    context.startActivity(new Intent(context, IdentityActivity.class));
+                }else if (grildItemInfo.getKey().equals(Common.POSTCODE_KEY)) {
+                    DialogUtil.showPostCodeDialog(context,"邮编地址","邮编地址:",null);
+                }  else if (grildItemInfo.getKey().equals(Common.IP_KEY)) {
+                    DialogUtil.showInputDialog(context,"IP查询",null);
+                } else if (grildItemInfo.getKey().equals(Common.LAUGH_KEY)) {
+                    context.startActivity(new Intent(context, LaughActivity.class));
+                } if (grildItemInfo.getKey().equals(Common.LAWYER_KEY)) {
                     DialogUtil.spinnerWheelDialog(context, false, context.getResources().getStringArray(R.array.province_item), new DialogListener() {
                         @Override
                         public void handle(String text) {

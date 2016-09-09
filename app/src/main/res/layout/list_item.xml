@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/public_space_value_16"
         android:textColor="#333333"
-        android:text="dsns"
         android:textSize="@dimen/public_textsize_value_16"/>
     <View
         android:layout_alignParentBottom="true"

@@ -3,32 +3,44 @@ package com.example.zenghui.bmobdemo.utils;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zenghui.bmobdemo.R;
 import com.example.zenghui.bmobdemo.adapter.ListAdapter;
 import com.example.zenghui.bmobdemo.adapter.SpinnerGroupAdapter;
 import com.example.zenghui.bmobdemo.listener.DialogListener;
+import com.example.zenghui.bmobdemo.model.CommonResponse;
+import com.example.zenghui.bmobdemo.model.CookieCallBack;
 import com.example.zenghui.bmobdemo.model.ListInfo;
 import com.example.zenghui.bmobdemo.spinnerwheel.AbstractWheel;
 import com.example.zenghui.bmobdemo.spinnerwheel.OnWheelScrollListener;
 import com.example.zenghui.bmobdemo.views.BmobDialog;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by zenghui on 16/8/10.
  */
 public class DialogUtil {
 
-    public static void showListDialog(final Context con, String title, final List<ListInfo> listInfos, final boolean prominentLast, final DialogListener dialogListener){
+    public static void showListDialog(final Context con, String title, final List<Object> listInfos, final boolean prominentLast, final DialogListener dialogListener){
         final Dialog mDialog = new Dialog(con, R.style.CashBusDialog);
         mDialog.setContentView(R.layout.list_layout);
         mDialog.setCanceledOnTouchOutside(false);
@@ -57,15 +69,6 @@ public class DialogUtil {
             }
         });
 
-        if (dialogListener != null) {
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mDialog.dismiss();
-                    dialogListener.handle(listInfos.get(position).getLeft());
-                }
-            });
-        }
         iGotIt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +77,137 @@ public class DialogUtil {
         });
         mDialog.show();
     }
+
+    public static void showPicker(final Context con,String title, final DialogListener dialogListener){
+        final Dialog mDialog = new Dialog(con, R.style.CashBusDialog);
+        mDialog.setContentView(R.layout.picker_layout);
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.setCancelable(false);
+        final DatePicker datePicker = (DatePicker) mDialog.findViewById(R.id.picker);
+        TextView titleTv = (TextView) mDialog.findViewById(R.id.title);
+        TextView iGotIt = (TextView) mDialog.findViewById(R.id.iGotIt);
+        titleTv.setText(title);
+
+        iGotIt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogListener != null){
+                    dialogListener.handle(datePicker.getYear()+"-"+(datePicker.getMonth()+1)+"-"+datePicker.getDayOfMonth());
+                }
+                mDialog.dismiss();
+            }
+        });
+        mDialog.show();
+    }
+
+    public static void showPostCodeDialog(final Context con, String title, final String detail, final DialogListener dialogListener){
+        final Dialog mDialog = new Dialog(con, R.style.CashBusDialog);
+        mDialog.setContentView(R.layout.ip_layout);
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.setCancelable(true);
+
+        TextView titleTv = (TextView) mDialog.findViewById(R.id.title);
+        TextView iGotIt = (TextView) mDialog.findViewById(R.id.btn_ok);
+        final TextView tvDetail = (TextView) mDialog.findViewById(R.id.tvDetail);
+        final EditText tvInput = (EditText) mDialog.findViewById(R.id.tvInput);
+        tvInput.setHint("请输入邮编");
+        tvInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        titleTv.setText(title);
+        tvDetail.setText(detail);
+        iGotIt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!Common.isZipNO(tvInput.getText().toString().trim())){
+                    Toast.makeText(con,"请输入正确的邮编",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Common.hideSoftIput(con,tvInput);
+                DialogUtil.showLoading(con,"获取中...");
+                ITask iTask = Common.getTask("http://v.juhe.cn");
+                Call<CommonResponse> call = iTask.getPostCode(tvInput.getText().toString().trim(),Common.POSTCODE_KEY);
+                call.enqueue(new CookieCallBack<CommonResponse>(){
+                    @Override
+                    public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+                        super.onResponse(call, response);
+                        CommonResponse commonResponse = response.body();
+
+                        if (commonResponse != null){
+                            ArrayList<Map<String,String>> list = (ArrayList<Map<String,String>>) commonResponse.getResult().get("list");
+                            if (list != null && list.size() > 0) {
+                                tvDetail.setText(detail + list.get(0).get("Province") + "-" + list.get(0).get("City") + "-" + list.get(0).get("District"));
+                            }else {
+                                Toast.makeText(con,"抱歉 没有查询到结果",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        DialogUtil.dimissLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Call<CommonResponse> call, Throwable t) {
+                        super.onFailure(call, t);
+                        DialogUtil.dimissLoading();
+                    }
+                });
+                if (dialogListener!= null){
+                    dialogListener.handle("");
+                }
+            }
+        });
+        mDialog.show();
+        Common.showSoftIput(con,tvInput);
+    }
+
+    public static void showInputDialog(final Context con, String title, final DialogListener dialogListener){
+        final Dialog mDialog = new Dialog(con, R.style.CashBusDialog);
+        mDialog.setContentView(R.layout.ip_layout);
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.setCancelable(true);
+
+        TextView titleTv = (TextView) mDialog.findViewById(R.id.title);
+        TextView iGotIt = (TextView) mDialog.findViewById(R.id.btn_ok);
+        final TextView tvDetail = (TextView) mDialog.findViewById(R.id.tvDetail);
+        final EditText tvInput = (EditText) mDialog.findViewById(R.id.tvInput);
+        titleTv.setText(title);
+        iGotIt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!Common.isIPAddress(tvInput.getText().toString().trim())){
+                    Toast.makeText(con,"请输入正确的ip",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Common.hideSoftIput(con,tvInput);
+                DialogUtil.showLoading(con,"获取中...");
+                ITask iTask = Common.getTask("http://apis.juhe.cn");
+                Call<CommonResponse> call = iTask.getIpAddress(tvInput.getText().toString().trim(),Common.IP_KEY);
+                call.enqueue(new CookieCallBack<CommonResponse>(){
+                    @Override
+                    public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+                        super.onResponse(call, response);
+                        CommonResponse commonResponse = response.body();
+
+                        if (commonResponse != null && commonResponse.getResultcode().equals("200")){
+                            tvDetail.setText("IP来自:"+ commonResponse.getResult().get("area")+" "+commonResponse.getResult().get("location"));
+                        }
+                        DialogUtil.dimissLoading();
+                    }
+
+                    @Override
+                    public void onFailure(Call<CommonResponse> call, Throwable t) {
+                        super.onFailure(call, t);
+                        DialogUtil.dimissLoading();
+                    }
+                });
+                if (dialogListener!= null){
+                    dialogListener.handle("");
+                }
+            }
+        });
+        mDialog.show();
+        Common.showSoftIput(con,tvInput);
+    }
+
     public static BmobDialog bmobDialog;
     public static void showLoading(Context context,String content){
 

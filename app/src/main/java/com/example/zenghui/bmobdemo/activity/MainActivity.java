@@ -77,7 +77,7 @@ public class MainActivity extends BasicActivity {
         fragments.add(new CommonFragment());
         fragments.add(new DebitFragment());
         fragments.add(new DebitFragment());
-        fragment.InitViewPager(fragments,new String[]{"常用工具","公募筹款","债权转让"});
+        fragment.InitViewPager(fragments,new String[]{"常用工具","周公解梦","债权转让"});
         transaction.replace(R.id.contentView, fragment);
         transaction.commit();
 //        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -20,10 +20,10 @@ import java.util.List;
  */
 public class ListAdapter extends BaseAdapter{
 
-    List<ListInfo> listInfos;
+    List<Object> listInfos;
     Context context;
     boolean prominentLast;
-    public ListAdapter(Context context, List<ListInfo> listInfos, boolean prominentLast){
+    public ListAdapter(Context context, List<Object> listInfos, boolean prominentLast){
         this.listInfos = listInfos;
         this.context = context;
         this.prominentLast = prominentLast;
@@ -57,24 +57,13 @@ public class ListAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        final ListInfo listInfo = listInfos.get(position);
+        final String listInfo = (String) listInfos.get(position);
 
-        if (prominentLast) {
-            if (position == getCount() - 1) {
-                viewHolder.left.setTextColor(Color.parseColor("#ff6f00"));
-                viewHolder.right.setTextColor(Color.parseColor("#ff6f00"));
-            }else {
-                viewHolder.left.setTextColor(Color.parseColor("#333333"));
-                viewHolder.right.setTextColor(Color.parseColor("#333333"));
-            }
-        }else {
-            viewHolder.left.setTextSize(TypedValue.COMPLEX_UNIT_PX,context.getResources().getDimensionPixelSize(R.dimen.public_textsize_value_13));
-            viewHolder.right.setTextSize(TypedValue.COMPLEX_UNIT_PX,context.getResources().getDimensionPixelSize(R.dimen.public_textsize_value_13));
-        }
+        viewHolder.left.setTextSize(TypedValue.COMPLEX_UNIT_PX,context.getResources().getDimensionPixelSize(R.dimen.public_textsize_value_13));
+        viewHolder.right.setTextSize(TypedValue.COMPLEX_UNIT_PX,context.getResources().getDimensionPixelSize(R.dimen.public_textsize_value_13));
 
-        viewHolder.left.setText(listInfo.getLeft());
-        viewHolder.right.setText(listInfo.getRight());
 
+        viewHolder.left.setText(listInfo);
         return convertView;
     }
 

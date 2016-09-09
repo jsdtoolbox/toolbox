@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:gravity="center"
+        android:text="综合费用"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/public_textsize_value_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_space_value_50"
+        android:background="@drawable/list_top_r14"/>
+
+    <DatePicker
+        android:id="@+id/picker"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/iGotIt"
+        android:gravity="center"
+        android:text="我知道了"
+        android:textColor="#ff6f00"
+        android:textSize="@dimen/public_textsize_value_15"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_space_value_50"
+        android:background="@drawable/list_bottom_r14"/>
+</LinearLayout>

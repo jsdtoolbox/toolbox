@@ -44,15 +44,38 @@ public class CommonFragment extends BasicFragment{
         GrildItemInfo grildItemInfo = new GrildItemInfo();
         grildItemInfo.setDecribe("号码归属地");
         grildItemInfo.setKey(Common.PHONE_ADDRESS_KEY);
-        grildItemInfo.setImgSource(R.mipmap.wather);
+        grildItemInfo.setImgSource(R.mipmap.phone_address);
         list.add(grildItemInfo);
-        for (int i = 0; i < 30; i++){
-            grildItemInfo = new GrildItemInfo();
-            grildItemInfo.setDecribe("律师");
-            grildItemInfo.setKey(Common.LAWYER_KEY);
-            grildItemInfo.setImgSource(R.mipmap.wather);
-            list.add(grildItemInfo);
-        }
+
+        grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("律师");
+        grildItemInfo.setKey(Common.LAWYER_KEY);
+        grildItemInfo.setImgSource(R.mipmap.lawyer);
+        list.add(grildItemInfo);
+
+        grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("ip地址");
+        grildItemInfo.setKey(Common.IP_KEY);
+        grildItemInfo.setImgSource(R.mipmap.ip_address);
+        list.add(grildItemInfo);
+
+        grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("身份证查询");
+        grildItemInfo.setKey(Common.IDENTITY_KEY);
+        grildItemInfo.setImgSource(R.mipmap.identity);
+        list.add(grildItemInfo);
+
+        grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("邮编地址");
+        grildItemInfo.setKey(Common.POSTCODE_KEY);
+        grildItemInfo.setImgSource(R.mipmap.postcode);
+        list.add(grildItemInfo);
+
+        grildItemInfo = new GrildItemInfo();
+        grildItemInfo.setDecribe("开心一笑");
+        grildItemInfo.setKey(Common.LAUGH_KEY);
+        grildItemInfo.setImgSource(R.mipmap.laugh);
+        list.add(grildItemInfo);
         gridView.setAdapter(new GrildViewAdapter(getActivity(),list));
     }
 

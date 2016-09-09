@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@color/app_bg"
     android:layout_width="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
-
-    <TextView
-
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="无数据"/>
+        android:layout_marginLeft="@dimen/public_space_value_15"
+        android:layout_marginRight="@dimen/public_space_value_15"
+        android:layout_marginTop="@dimen/public_space_value_20"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.example.zenghui.bmobdemo.views.ExtendClearEditText
+            android:id="@+id/dream"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/public_space_value_40"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:hint="请输入梦的关键字"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/T5"
+            android:textColorHint="@color/T2"
+            android:textSize="@dimen/public_textsize_value_15" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="@dimen/public_space_value_60"
+            android:layout_height="@dimen/public_space_value_40"
+            android:layout_marginLeft="@dimen/public_space_value_10"
+            android:background="@drawable/btn_next_r4"
+            android:gravity="center"
+            android:text="查询"
+            android:textColor="@color/white"
+            android:textSize="@dimen/public_textsize_value_15" />
+    </LinearLayout>
+
+    <ListView
+        android:dividerHeight="1px"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/public_space_value_15"
+        android:background="@color/white"
+        android:id="@+id/dreams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
